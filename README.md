@@ -48,3 +48,23 @@ ji.tansaku            # => "google.com/"
 3. scrapes the page for uses of the character
 4. searches on Google (Japanaese language settings) an checks the number of hits
 5. return link to the searches to ensure that uses (so the number of hits is not due to some music act, song or something)
+
+## Skeleton scraping program
+```ruby
+require 'google-search'
+require 'mechanize'
+
+kanji = "雅"
+url="http://kotobank.jp/word/#{kanji}"
+mechanize = Mechanize.new
+
+page = mechanize.get(url)
+page.links_with( text: /#{kanji}/, href: /daijisen/ ).map { |link|
+  tango = link.text
+  Google::Search::Web.new(
+    query: tango,
+    language: :ja
+  ).count
+}
+```
+This did not work however as google only accepts 100 searches a day on a free plan.
