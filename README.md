@@ -41,30 +41,11 @@ ji.tansaku            # => "google.com/"
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## Algoritm
+## Outline
 
 1. recieves a character from CLI
-2. finds the character on kotobank
-3. scrapes the page for uses of the character
-4. searches on Google (Japanaese language settings) an checks the number of hits
-5. return link to the searches to ensure that uses (so the number of hits is not due to some music act, song or something)
+2. place all matches in the common list into an enumarator object, store word with frequency
+3. add missing words from the dictionary to the enumarator object
+4. add meta data to the words
+5. output the first hit and let the user prompt for the second, then third etc.
 
-## Skeleton scraping program
-```ruby
-require 'google-search'
-require 'mechanize'
-
-kanji = "雅"
-url="http://kotobank.jp/word/#{kanji}"
-mechanize = Mechanize.new
-
-page = mechanize.get(url)
-page.links_with( text: /#{kanji}/, href: /daijisen/ ).map { |link|
-  tango = link.text
-  Google::Search::Web.new(
-    query: tango,
-    language: :ja
-  ).count
-}
-```
-This did not work however as google only accepts 100 searches a day on a free plan.
