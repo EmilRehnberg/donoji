@@ -1,10 +1,14 @@
 require 'thor'
+require 'donoji'
+
 module Donoji
   class CLI < Thor
 
     desc "find character", "tries to find a common use for a character"
     def find(letter)
-      print letter
+      searcher = MainichiWordSearcher.new(letter)
+      searcher.find
+      puts searcher.matches
     end
 
     desc "prompts for character", "asks the user for a charcter"

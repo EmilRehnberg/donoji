@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
+require 'donoji'
 require 'donoji/cli'
 Donoji::CLI.start

@@ -1,0 +1,39 @@
+# Frequency of Words Appearing in 4 Years of the Mainichi Newspaper.
+# This file was produced by Charles Kelly (September 24-26, 2003)
+# http://aitech.ac.jp/~ckelly/
+#
+# This file recalculates the word frequency counts in
+# Alexandre Girardi's "wordfreq" file. (1998)
+#
+# This is what I did.
+# The counts for the various forms of the same word were merged.
+# Certain words/items were removed: numbers, English and romaji,
+# punctuation, phrases ending in the particle "wo", lines beginning with
+# "n" or the particle "wo."
+# Then the file was sorted by "the count."
+#
+# The most fequently used word was used 3,711,420 times.
+#    592 words were used more than 10,000 times.
+#  5,039 words were used more than 1,000 times.
+#  7,654 words were used more than 500 times.
+# 19,602 words were used more than 100 times.
+# 26,813 words were used more than 50 times.
+# 38,389 words were used more than 20 times.
+#
+# The data contains 142,298 lines in the following format.
+# The Word + TAB + The Count
+
+の	3711420
+は	1950996
+た	1736532
+に	1711256
+が	1678863
+する	1616566
+と	1292531
+て	1251528
+だ	1100427
+で	1072230
+いる	615694
+も	551228
+ない	458482
+日	391287
