@@ -3,25 +3,29 @@ require 'donoji'
 
 module Donoji
   class CLI < Thor
+    default_task :prompt_for_character
 
     desc "find character", "tries to find a common use for a character"
     def find(letter)
       searcher = MainichiWordSearcher.new(letter)
       searcher.find
-      puts(searcher.matches)
+      enter_results_control(searcher)
     end
 
     desc "prompts for character", "asks the user for a charcter"
     def prompt_for_character
-      find(prompt_input("どのじを探していますか？:\n"))
+      find(prompt_input("どのじを探していますか？"))
     end
 
-    desc "prompt", "ask user for input"
+    private
+
     def prompt_input(msg)
-      print(msg)
+      print(msg.concat("：\n>> "))
       gets.chomp
     end
 
-    default_task :prompt_for_character
+    def enter_results_control(searcher)
+      puts(searcher.matches)
+    end
   end
 end
