@@ -10,6 +10,6 @@ RSpec.describe Donoji::Word do
   end
 
   it "formats nicely with #to_s" do
-    expect(word.to_s).to eql("積ん読：3")
+    expect(word.to_s).to include("積ん読：3")
   end
 end
