@@ -8,7 +8,7 @@ module Donoji
     def find(letter)
       searcher = MainichiWordSearcher.new(letter)
       searcher.find
-      puts searcher.matches
+      puts(searcher.matches)
     end
 
     desc "prompts for character", "asks the user for a charcter"
@@ -19,7 +19,7 @@ module Donoji
     desc "prompt", "ask user for input"
     def prompt_input(msg)
       print(msg)
-      stdin.gets.chomp
+      gets.chomp
     end
 
     default_task :prompt_for_character

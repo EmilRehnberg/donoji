@@ -7,8 +7,8 @@ Feature: Donoji
     Then the output should contain "いる"
 
   Scenario: empty initial input followed by "漢" inserted
-    When I run `donoji`
-    Then I should see "どのじ"
-    And I enter "漢"
-    Then the output should contain "漢字"
+    When I run `donoji` interactively
+    And I type "い"
+    Then the output should contain "どのじ"
+    Then the output should contain "ない"
 
