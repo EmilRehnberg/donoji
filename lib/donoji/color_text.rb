@@ -4,9 +4,10 @@
 
 module Donoji
   module ColorText
-    def magenta(txt); colorize(txt, 95); end
+
+    def grey(txt);      colorize(txt, 37); end
+    def magenta(txt);   colorize(txt, 95); end
     def dark_blue(txt); colorize(txt, 34); end
-    def grey(txt); colorize(txt, 37); end
 
     private
 

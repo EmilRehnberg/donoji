@@ -13,6 +13,7 @@ module Donoji
     def initialize(letter)
       @letter = letter
       @matches = []
+      find
     end
 
     def find

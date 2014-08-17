@@ -6,6 +6,7 @@ require 'thor'
 
 require_relative 'donoji/version'
 require_relative 'donoji/color_text'
+require_relative 'donoji/printers/basic'
 require_relative 'donoji/gem_config'
 require_relative 'donoji/word'
 require_relative 'donoji/cli'

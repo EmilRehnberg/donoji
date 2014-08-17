@@ -10,7 +10,6 @@ Feature: Donoji interactive actions
     Then the output should contain "どのじ"
     Then the output should contain "ない"
 
-
   Scenario: the user wants to print all the hits at once
     When I run `donoji` interactively
     And I type "い"
