@@ -28,8 +28,11 @@ module Donoji
       words = searcher.matches.to_enum
       puts(words.next)
       until last_word?(words) do
-        case prompt_input("次(n) / 止(q)?")
+        case prompt_input("次(n) / 止(q) / 全(a)?")
         when "n" then puts("#{words.next}")
+        when "a" then
+          puts(searcher.matches)
+          abort
         when "q" then abort
         else next
         end
