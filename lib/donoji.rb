@@ -2,6 +2,8 @@ require 'csv'
 require 'yaml'
 require 'fileutils'
 require 'pathname'
+require 'thor'
+require 'colorize'
 
 require_relative 'donoji/version'
 require_relative 'donoji/gem_config'
