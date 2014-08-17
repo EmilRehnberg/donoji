@@ -2,6 +2,7 @@ require 'donoji'
 
 module Donoji
   class CLI < Thor
+    include ColorText
     default_task :prompt_for_character
 
     desc "find character", "tries to find a common use for a character"
@@ -19,7 +20,7 @@ module Donoji
     private
 
     def prompt_input(msg)
-      print(msg.concat("： "))
+      print(dark_blue(msg.concat("： ")))
       gets.chomp
     end
 

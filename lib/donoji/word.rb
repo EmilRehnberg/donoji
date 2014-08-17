@@ -1,7 +1,9 @@
 module Donoji
   Word = Struct.new(:face, :hits) do
+    include(ColorText)
+
     def to_s
-      "#{face}：#{hits}".light_magenta
+      magenta("#{face}：#{hits}")
     end
   end
 end
