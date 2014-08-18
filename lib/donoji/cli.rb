@@ -4,15 +4,17 @@ module Donoji
   class CLI < Thor
     default_task :prompt_for_character
 
-    desc "find character", "tries to find a common use for a character"
+    desc "[--verbose]", "tries to find a common use for a character"
+    method_option :verbose, type: :boolean, aliases: "-v"
     def find(letter)
-      set_printer
+      set_printer(options)
       search(letter)
     end
 
-    desc "prompts for character", "asks the user for a charcter"
+    desc "[--verbose]", "asks the user for a charcter"
+    method_option :verbose, type: :boolean, aliases: "-v"
     def prompt_for_character
-      set_printer
+      set_printer(options)
       search(prompt_input("どのじを探していますか？"))
     end
 
@@ -25,7 +27,7 @@ module Donoji
 
     def prompt_input(msg)
       @printer.query(msg)
-      gets.strip.chomp
+      STDIN.gets.strip.chomp
     end
 
     def enter_results_control(matches)
@@ -51,8 +53,8 @@ module Donoji
       !words.peek rescue true
     end
 
-    def set_printer
-      @printer = Printer::Extended
+    def set_printer(options)
+      @printer = options[:verbose] ? Printer::Extended : Printer::Basic
     end
   end
 end
