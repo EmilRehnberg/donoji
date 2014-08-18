@@ -6,13 +6,13 @@ module Donoji
 
     desc "find character", "tries to find a common use for a character"
     def find(letter)
-      @printer = Printer::Basic
+      set_printer
       search(letter)
     end
 
     desc "prompts for character", "asks the user for a charcter"
     def prompt_for_character
-      @printer = Printer::Basic
+      set_printer
       search(prompt_input("どのじを探していますか？"))
     end
 
@@ -25,7 +25,7 @@ module Donoji
 
     def prompt_input(msg)
       @printer.query(msg)
-      gets.chomp
+      gets.strip.chomp
     end
 
     def enter_results_control(matches)
@@ -49,6 +49,10 @@ module Donoji
 
     def last_word?(words)
       !words.peek rescue true
+    end
+
+    def set_printer
+      @printer = Printer::Extended
     end
   end
 end
