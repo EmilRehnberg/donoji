@@ -34,11 +34,13 @@ module Donoji
       words = matches.to_enum
       print_next_word(words)
       until last_word?(words) do
-        case prompt_input("次(n) / 止(q) / 全(a)?")
+        case prompt_input("次(n) / 全(a)? / 他(o) / 止(q)")
         when "n" then print_next_word(words)
         when "a" then
           @printer.print_all_matches(matches)
           abort
+        when "o" then
+          prompt_for_character
         when "q" then abort
         else next
         end

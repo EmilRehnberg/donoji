@@ -17,3 +17,12 @@ Feature: Donoji interactive actions
     Then the output should contain "いる"
     Then the output should contain "ない"
 
+  Scenario: the user can change the letter to search for
+    When I run `donoji` interactively
+    And I type "い"
+    And I type "o"
+    And I type "彙"
+    And I type "q"
+    Then the output should contain "いる"
+    Then the output should contain "語彙"
+
