@@ -22,7 +22,7 @@ module Donoji
 
     def search(letter)
       searcher = MainichiWordSearcher.new(letter)
-      enter_results_control(searcher.matches)
+      enter_results_control(searcher)
     end
 
     def prompt_input(msg)
@@ -30,7 +30,9 @@ module Donoji
       STDIN.gets.strip.chomp
     end
 
-    def enter_results_control(matches)
+    def enter_results_control(searcher)
+      matches = searcher.matches
+      exit_amicably(searcher.letter) if matches.empty?
       words = matches.to_enum
       print_next_word(words)
       until last_word?(words) do
@@ -57,6 +59,11 @@ module Donoji
 
     def set_printer(options)
       @printer = options[:verbose] ? Printer::Extended : Printer::Basic
+    end
+
+    def exit_amicably(letter)
+      puts "『#{letter}』に一致する情報は見つかりませんでした"
+      abort
     end
   end
 end

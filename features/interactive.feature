@@ -26,3 +26,8 @@ Feature: Donoji interactive actions
     Then the output should contain "いる"
     Then the output should contain "語彙"
 
+  Scenario: the program quits with a greeting if there is no search match
+    When I run `donoji` interactively
+    And I type "座禅神"
+    Then the output should contain "『座禅神』に一致する情報は見つかりませんでした"
+
