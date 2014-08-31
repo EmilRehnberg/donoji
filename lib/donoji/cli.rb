@@ -34,7 +34,13 @@ module Donoji
       matches = searcher.matches
       exit_amicably(searcher.letter) if matches.empty?
       words = matches.to_enum
+
       print_next_word(words)
+
+      enter_word_printing_handler(matches, words)
+    end
+
+    def enter_word_printing_handler(matches, words)
       until last_word?(words) do
         case prompt_input("次(n) / 全(a)? / 他(o) / 止(q)")
         when "n" then print_next_word(words)
